@@ -26,14 +26,14 @@
       <hr><br>
       <h3>We only have 5 tables! Book your seat or you will regret!</h3>
         <br>
-      <a href="/add"><button class="btn btn-success btn-lg"><i class="fas fa-pen"></i></span> View Tables </button></a>
-      <a href="/api/characters"><button class="btn btn-danger btn-lg"><span><i class="fas fa-utensils"></i></span> Make Reservation </button></a>
+      <a href="/tables.html"><button class="btn btn-success btn-lg"><i class="fas fa-pen"></i></span> View Tables </button></a>
+      <a href="/reservation.html"><button class="btn btn-danger btn-lg"><span><i class="fas fa-utensils"></i></span> Make Reservation </button></a>
     </div>
 
 <div>
-    <a class="apiTable" href="#">API Table Link</a>
+    <a href="/api/tables">API Table Link</a>
     <span> &nbsp || &nbsp </span>
-    <a class="apiWaitlist" href="#">API Wait List</a>
+    <a href="/api/waitlist">API Wait List</a>
 </div>
     
     
@@ -74,38 +74,26 @@
     </div>
   </div> -->
 
-  <script type="text/javascript">
+
+    <!-- <script type="text/javascript">
     $("#apiTable").on("click", function() {
       $.get("/api/table", function(data) {
         console.log(data);
+        if (data) {
+          $("#stats").show();
+          $("#name").text(data.name);
+          $("#role").text(data.role);
+          $("#age").text(data.age);
+          $("#force-points").text(data.forcePoints);
+        } else {
+          $("#name").text(
+            "The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
       });
     });
 
-    $("#apiWaitlist").on("click", function() {
-      $.get("/api/waitlist", function(data) {
-        console.log(data);
-      });
-    });
-
-    // <script type="text/javascript">
-    // $("#apiTable").on("click", function() {
-    //   $.get("/api/table", function(data) {
-    //     console.log(data);
-    //     if (data) {
-    //       $("#stats").show();
-    //       $("#name").text(data.name);
-    //       $("#role").text(data.role);
-    //       $("#age").text(data.age);
-    //       $("#force-points").text(data.forcePoints);
-    //     } else {
-    //       $("#name").text(
-    //         "The force is not strong with this one. Your character was not found.");
-    //       $("#stats").hide();
-    //     }
-    //   });
-    // });
-
-  </script>
+  </script> -->
 </body>
 
 </html>
