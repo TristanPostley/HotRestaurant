@@ -53,7 +53,7 @@ const waitlist =
     res.sendFile(path.join(__dirname, "reservation.html"));
   });  
   
-  app.post("/reserve", function(req, res) {
+  app.post("/api/reserve", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     var newTable = req.body;

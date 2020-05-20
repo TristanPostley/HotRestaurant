@@ -76,15 +76,14 @@
       event.preventDefault();
       var newReservation = {
         name: $("#name").val().trim(),
-        role: $("#phoneNumber").val().trim(),
-        age: $("#email").val().trim(),
-        forcePoints: $("#uniqueID").val().trim()
+        PhpneNumber: $("#phoneNumber").val().trim(),
+        Email: $("#email").val().trim(),
+        UID: $("#uniqueID").val().trim()
       };
 
-      $.post("/api/characters", newReservation)
+      $.post("/api/reserve", newReservation)
         .then(function(data) {
-          console.log("add.html", data);
-          alert("Adding character...");
+          alert("Adding new reservation.");
         });
     });
   </script>
