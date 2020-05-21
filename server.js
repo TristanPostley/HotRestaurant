@@ -49,20 +49,29 @@ const waitlist =
     res.json(waitlist);
   });
   
-  app.get("/reserve", function(req, res) {
+  app.get("/reservation", function(req, res) {
     res.sendFile(path.join(__dirname, "reservation.html"));
   });  
   
-  app.post("/api/reserve", function(req, res) {
+  app.post("/api/reservation", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     var newTable = req.body;
 
-    if(tables.length < 5) tables.push(newTable);
-    else waitlist.push(newTable);
-  
-    res.json(tables);
+    if(tables.length < 5) {
+        tables.push(newTable);
+        return true;
+    }
+    else {
+        waitlist.push(newTable);
+        return false;
+    }
   });
+
+  app.post("/api/clear", function(req, res){
+      tables.length = 0;
+      waitlist.length = 0;
+  })
   
   // Starts the server to begin listening
   // =============================================================

@@ -65,7 +65,7 @@
         console.log(tableData);
         for (var i = 0; i < tableData.length; i++) {
           let tableList = $("#currentReservations");
-          let listItems = $("<li>");
+          let listItems = $("<li class='list-group-item mt-4'>");
           listItems.append(
             $("<h3>").text("Table " + (i + 1)),
             $("<hr>"),
@@ -84,9 +84,9 @@
         console.log(waitData);
         for (var i = 0; i < waitData.length; i++) {
           let waitingList = $("#waitList");
-          let listItems = $("<li>");
+          let listItems = $("<li class='list-group-item mt-4'>");
           listItems.append(
-            $("<h3>").text("Table " + (i + 1)),
+            $("<h3>").text("Waitlist " + (i + 1)),
             $("<hr>"),
             $("<h3>").text("Name: " + waitData[i].name),
             $("<h3>").text("Phone Number: " + waitData[i].PhoneNumber),
@@ -101,9 +101,14 @@
     function clearPage () {
       $("#currentReservations").empty();
       $("#waitList").empty();
+
+      $.post("/api/clear", null)
     }
 
     $("#clearBtn").on("click", clearPage);
+
+    getTable();
+    getWaitList();
 
   </script>
   
