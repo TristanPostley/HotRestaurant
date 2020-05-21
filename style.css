@@ -9,3 +9,15 @@ a {
 a:visited {
     color: red;
 }
+
+/* .imagediv {
+    height: 40px;
+    background-image: url("assets/pizza.jpg");
+    background-size: cover;
+} */
+
+.img {
+    object-fit: cover;
+    object-position: bottom;
+    height: 252px;
+}
