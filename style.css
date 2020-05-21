@@ -1,0 +1,11 @@
+.title {
+    text-align: center;
+}
+
+a {
+    color: green;
+}
+
+a:visited {
+    color: red;
+}

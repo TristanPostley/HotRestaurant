@@ -72,21 +72,20 @@
   </footer>
 
   <script type="text/javascript">
-    // $("#submit-btn").on("click", function(event) {
-    //   event.preventDefault();
-    //   var newReservation = {
-    //     name: $("#name").val().trim(),
-    //     role: $("#phoneNumber").val().trim(),
-    //     age: $("#email").val().trim(),
-    //     forcePoints: $("#uniqueID").val().trim()
-    //   };
+    $("#submit-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        name: $("#name").val().trim(),
+        PhpneNumber: $("#phoneNumber").val().trim(),
+        Email: $("#email").val().trim(),
+        UID: $("#uniqueID").val().trim()
+      };
 
-    //   $.post("/api/tables", newReservation)
-    //     .then(function(data) {
-    //       console.log("add.html", data);
-    //       alert("Adding character...");
-    //     });
-    // });
+      $.post("/api/reserve", newReservation)
+        .then(function(data) {
+          alert("Adding new reservation.");
+        });
+    });
   </script>
 
 </body>

@@ -12,50 +12,56 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// =============================================================
+const tables = 
+[
+    {
+        name : "Billy",
+        PhoneNumber : "12",
+        Email : "Billy@Blob.com",
+        UID : 1111
+    }
+]
+
+const waitlist = 
+[
+
+]
+
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
   
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
   });
   
-  // Displays all characters
   app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
   });
+
+  app.get("/api/tables", function(req, res) {
+    res.json(tables);
+  });
+
+  app.get("/api/waitlist", function(req, res) {
+    res.json(waitlist);
+  });
   
-  // Displays a single character, or returns false
   app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "reserve.html"));
+    res.sendFile(path.join(__dirname, "reservation.html"));
   });  
-//     console.log(chosen);
   
-//     for (var i = 0; i < characters.length; i++) {
-//       if (chosen === characters[i].routeName) {
-//         return res.json(characters[i]);
-//       }
-//     }
-  
-//     return res.json(false);
-//   });
-  
-  // Create New Characters - takes in JSON input
-  app.post("/api/characters", function(req, res) {
+  app.post("/api/reserve", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
-    var newCharacter = req.body;
+    var newTable = req.body;
+
+    if(tables.length < 5) tables.push(newTable);
+    else waitlist.push(newTable);
   
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
-  
-    console.log(newCharacter);
-  
-    characters.push(newCharacter);
-  
-    res.json(newCharacter);
+    res.json(tables);
   });
   
   // Starts the server to begin listening
